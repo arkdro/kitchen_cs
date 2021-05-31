@@ -95,7 +95,7 @@ namespace Pics {
 
 
         private bool is_next_cell_snow(Coordinates next_coordinates, Room room) {
-            var content = room.try_get(coordinates);
+            var content = room.try_get(next_coordinates);
             return content == Cell.Snow;
         }
         private void go_on(Room room, Coordinates next_coordinates) {
