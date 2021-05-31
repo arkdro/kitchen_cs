@@ -133,6 +133,7 @@ namespace Pics {
             spare_brushes--;
             stop();
             burn_steps(room);
+            previous_background = NextCellContent.Ground;
         }
 
         private Coordinates initial_coordinates() {
