@@ -82,7 +82,12 @@ namespace Pics {
         }
 
         private void burn() {
+            coordinates = initial_coordinates();
             spare_brushes--;
+        }
+
+        private Coordinates initial_coordinates() {
+            return new Coordinates(0, 0);
         }
 
         private void stop() {
