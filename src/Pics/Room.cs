@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+
 namespace Pics {
     public class Room {
         private Cell[,] _floor;
+        private HashSet<Coordinates> steps;
         internal readonly int height;
         internal readonly int width;
         public Room() : this(4, 7) {
@@ -11,6 +14,7 @@ namespace Pics {
             width = w;
             height = h;
             _floor = filled_floor(width, height);
+            steps = new HashSet<Coordinates>();
         }
         override public string ToString() {
             string acc = "";
