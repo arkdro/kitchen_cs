@@ -2,8 +2,8 @@ using System;
 using System.Threading;
 
 namespace Pics {
-    public class KeyboardInput {
-        public static ConsoleKey? get_input() {
+    public class KeyboardInput : Input {
+        public ConsoleKey? get_input() {
             ConsoleKey key = ConsoleKey.Spacebar;
             Thread.Sleep(1);
             if(Console.KeyAvailable) {
@@ -13,7 +13,7 @@ namespace Pics {
             return null;
         }
 
-        public static Direction get_direction(Direction old) {
+        public Direction get_direction(Direction old) {
             var key = get_input();
             if(key is null) {
                 return old;
