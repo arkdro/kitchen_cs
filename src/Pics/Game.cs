@@ -94,7 +94,6 @@ namespace Pics
         private void create_snow_mice() {
             snow_mice = new List<SnowMouse>();
         }
-        }
 
         private void create_brush() {
             brush = new Brush();
@@ -105,7 +104,18 @@ namespace Pics
         }
 
         private void update_mice() {
-            foreach(var mouse in mice) {
+            update_ground_mice();
+            update_snow_mice();
+        }
+
+        private void update_ground_mice() {
+            foreach(var mouse in ground_mice) {
+                mouse.update();
+            }
+        }
+
+        private void update_snow_mice() {
+            foreach(var mouse in snow_mice) {
                 mouse.update();
             }
         }
