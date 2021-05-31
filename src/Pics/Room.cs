@@ -33,6 +33,11 @@ namespace Pics {
         public void add_step(Coordinates coordinates) {
             steps.Add(coordinates);
         }
+
+        public Cell get(Coordinates coordinates) {
+            return _floor[coordinates.x, coordinates.y];
+        }
+
         private Cell[,] filled_floor(int width, int height) {
             var array = new Cell[width,height];
             for(int y = 0; y < height; y++) {
