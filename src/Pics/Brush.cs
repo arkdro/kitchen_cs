@@ -4,9 +4,11 @@ using System.Linq;
 namespace Pics {
     public class Brush : MovingThing {
 
+        private int spare_brushes;
         public Brush() {
             coordinates = new Coordinates(0, 0);
             direction = Direction.Stop;
+            spare_brushes = 5;
         }
 
         public void update(List<GroundMouse> ground_mice, List<SnowMouse> snow_mice, Room room) {
@@ -80,6 +82,7 @@ namespace Pics {
         }
 
         private void burn() {
+            spare_brushes--;
         }
 
         private void stop() {
