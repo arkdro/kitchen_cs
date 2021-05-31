@@ -105,7 +105,7 @@ namespace Pics {
             snow_mice = new List<SnowMouse>();
             var n = level_number;
             for(var i = 0; i < n; i++) {
-                var mouse = new SnowMouse();
+                var mouse = create_snow_mouse(n, i);
                 snow_mice.Add(mouse);
             }
         }
