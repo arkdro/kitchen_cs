@@ -4,7 +4,6 @@ namespace Pics
 {
     class Game
     {
-        private Level level_to_play;
         private int level;
         private Config config;
         public Game() {
@@ -38,8 +37,8 @@ namespace Pics
         private void game_loop() {
             bool keep_playing = true;
             do {
-                level_to_play = new Level(level);
-                var result = play_level();
+                var level_to_play = new Level(level);
+                var result = level_to_play.play_level();
                 switch(result) {
                     case LevelResult.next_level:
                         increase_level();
@@ -56,10 +55,6 @@ namespace Pics
                         break;
                 }
             } while (keep_playing);
-        }
-
-        private LevelResult play_level() {
-            return level_to_play.play_level();
         }
     }
 }
