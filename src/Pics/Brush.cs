@@ -138,5 +138,10 @@ namespace Pics {
                 backround_change_status = BackgroundChange.None;
             }
         }
+
+        private bool contains_snow(Room room, Coordinates coordinates) {
+            var content = room.get(coordinates);
+            return content == Cell.Snow;
+        }
     }
 }
