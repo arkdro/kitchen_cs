@@ -101,6 +101,13 @@ namespace Pics {
             return new_cell == preferred_ground;
         }
 
+        private bool can_bounce_horisontal_wall(Room room) {
+            var new_direction = direction.flip_horizontal_wall();
+            var new_coordinates = Move.move(new_direction, coordinates);
+            var new_cell = room.get(new_coordinates);
+            return new_cell == preferred_ground;
+        }
+
         private void stop() {
             direction = Direction.Stop;
             speed = 0;
