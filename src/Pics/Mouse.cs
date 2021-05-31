@@ -30,7 +30,7 @@ namespace Pics {
                     bounce_vertical_wall(room);
                     break;
                 case NextCell.HorisontalWall:
-                    bounce_horisontal_wall();
+                    bounce_horisontal_wall(room);
                     break;
             }
         }
@@ -62,6 +62,13 @@ namespace Pics {
 
         private void bounce_vertical_wall(Room room) {
             if (can_bounce_vertical_wall(room)) {
+            } else {
+                bounce_corner(room);
+            }
+        }
+
+        private void bounce_horisontal_wall(Room room) {
+            if (can_bounce_horisontal_wall(room)) {
             } else {
                 bounce_corner(room);
             }
