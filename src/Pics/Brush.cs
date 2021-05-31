@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Pics {
     public class Brush : MovingThing {
@@ -50,12 +51,7 @@ namespace Pics {
         }
 
         private bool is_mouse_at_coordinates(Coordinates coordinates, IEnumerable<Mouse> mice) {
-            foreach(var mouse in mice) {
-                if (coordinates == mouse.coordinates) {
-                    return true;
-                }
-            }
-            return false;
+            return mice.Any(mouse => coordinates == mouse.coordinates);
         }
 
         private bool is_next_cell_outer_wall(Coordinates next_coordinates, Room room) {
