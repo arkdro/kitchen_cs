@@ -14,6 +14,7 @@ namespace Pics {
             width = w;
             height = h;
             _floor = filled_floor(width, height);
+            add_snow();
             init_steps();
         }
         override public string ToString() {
@@ -72,6 +73,22 @@ namespace Pics {
                 }
             }
             return array;
+        }
+
+        private void add_snow() {
+            if (width < 7 || height < 7) {
+                return;
+            }
+            var left_x = 2;
+            var right_x = width - 3;
+            var top_y = 2;
+            var bottom_y = height - 3;
+            for (var y = top_y; y <= bottom_y; y++) {
+                for (var x = left_x; x <= right_x; x++) {
+                    var coordinates = new Coordinates(x: x, y: y);
+                    set(coordinates, Cell.Snow);
+                }
+            }
         }
     }
 }
