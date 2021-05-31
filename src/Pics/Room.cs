@@ -1,8 +1,10 @@
 namespace Pics {
     public class Room {
         private Cell[,] _floor;
-        public Room() {
-            _floor = filled_floor(4, 7);
+        private int width, height;
+        public Room() : this(4, 7) {
+            _floor[1,0] = Cell.Food;
+            _floor[2,3] = Cell.Animal;
         }
         public Room(int w, int h) {
             width = w;
