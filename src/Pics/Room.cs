@@ -29,6 +29,10 @@ namespace Pics {
             }
             return acc;
         }
+
+        public void add_step(Coordinates coordinates) {
+            steps.Add(coordinates);
+        }
         private Cell[,] filled_floor(int width, int height) {
             var array = new Cell[width,height];
             for(int y = 0; y < height; y++) {
