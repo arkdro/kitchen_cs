@@ -1,5 +1,5 @@
 using System;
-using Xunit;
+using NUnit.Framework;
 
 using Pics;
 
@@ -7,13 +7,17 @@ namespace Pics.Test
 {
     public class UnitTest1
     {
-        [Fact]
+        [SetUp]
+        public void Setup() {
+        }
+
+        [Test]
         public void TestForVersion()
         {
             var pic = new LocalPic();
             var actual = pic.Version();
             var expected = 1;
-            Assert.Equal(expected, actual);
+            Assert.AreEqual(expected, actual);
         }
     }
 }
