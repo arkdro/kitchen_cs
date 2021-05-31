@@ -158,6 +158,10 @@ namespace Pics {
             foreach(var coordinate in room.get_steps()) {
                 room.set(coordinate, Cell.Ground);
             }
+            clear_steps(room);
+        }
+
+        private void clear_steps(Room room) {
             room.clear_steps();
         }
     }
