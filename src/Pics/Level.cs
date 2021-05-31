@@ -116,7 +116,11 @@ namespace Pics {
             Console.WriteLine(room);
         }
         private LevelResult calculate_level_result() {
-            return LevelResult.next_level;
+            if(brush.has_brushes_available()) {
+                return LevelResult.next_level;
+            } else {
+                return LevelResult.game_over;
+            }
         }
     }
 }

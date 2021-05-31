@@ -28,6 +28,10 @@ namespace Pics {
             };
         }
 
+        public bool has_brushes_available() {
+            return spare_brushes >= 0;
+        }
+
         private enum NextCellContent {
             Ground,
             Snow,
