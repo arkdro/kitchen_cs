@@ -102,6 +102,9 @@ namespace Pics {
         }
 
         private void create_snow_mice() {
+            if (!enough_space_for_snow_mice()) {
+                return;
+            }
             snow_mice = new List<SnowMouse>();
             var n = level_number;
             for(var i = 0; i < n; i++) {
