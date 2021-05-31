@@ -4,12 +4,14 @@ using System.Threading.Tasks;
 namespace Pics {
 
     public class Level {
+        private Config config;
         private int level_number;
         private Brush brush;
         private List<GroundMouse> ground_mice;
         private List<SnowMouse> snow_mice;
 
-        public Level(int level_number) {
+        public Level(Config config, int level_number) {
+            this.config = config;
             this.level_number = level_number;
             create_brush();
             create_mice();

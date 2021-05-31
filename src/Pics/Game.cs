@@ -37,7 +37,7 @@ namespace Pics
         private void game_loop() {
             bool keep_playing = true;
             do {
-                var level_to_play = new Level(level);
+                var level_to_play = new Level(config, level);
                 var result = level_to_play.play_level();
                 switch(result) {
                     case LevelResult.next_level:

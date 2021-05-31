@@ -3,7 +3,7 @@ using System.Configuration;
 
 namespace Pics
 {
-    class Config
+    public class Config
     {
         public readonly int width;
         public readonly int height;
