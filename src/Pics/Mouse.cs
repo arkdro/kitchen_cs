@@ -44,6 +44,14 @@ namespace Pics {
                 stop();
             }
         }
+
+        private void bounce_vertical_wall(Room room) {
+            if (can_bounce_vertical_wall(room)) {
+            } else {
+                bounce_corner(room);
+            }
+        }
+
         private bool can_bounce_back(Room room) {
             var backward_direction = direction.flip();
             var backward_coordinates = Move.move(backward_direction, coordinates);
