@@ -73,6 +73,10 @@ namespace Pics {
             return level_number;
         }
 
+        private int snow_mouse_initial_speed() {
+            return level_number;
+        }
+
         private Direction ground_mouse_initial_direction() {
             return Direction.DownLeft;
         }
