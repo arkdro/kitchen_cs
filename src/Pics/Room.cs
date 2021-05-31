@@ -24,7 +24,7 @@ namespace Pics {
             for(int y = 0; y < height; y++) {
                 string line = "";
                 for(int x = 0; x < width; x++) {
-                    var cell = _floor[x, y];
+                    var cell = _floor[y, x];
                     var symbol = cell.CellName();
                     line += symbol;
                 }
@@ -66,7 +66,7 @@ namespace Pics {
         }
 
         public Cell get(Coordinates coordinates) {
-            return _floor[coordinates.x, coordinates.y];
+            return _floor[coordinates.y, coordinates.x];
         }
 
         public Cell? try_get(Coordinates coordinates) {
@@ -80,7 +80,7 @@ namespace Pics {
         }
 
         public void set(Coordinates coordinates, Cell content) {
-            _floor[coordinates.x, coordinates.y] = content;
+            _floor[coordinates.y, coordinates.x] = content;
         }
 
         public HashSet<Coordinates> get_steps() {
@@ -96,10 +96,10 @@ namespace Pics {
         }
 
         private Cell[,] filled_floor(int width, int height) {
-            var array = new Cell[width,height];
+            var array = new Cell[height, width];
             for(int y = 0; y < height; y++) {
                 for(int x = 0; x < width; x++) {
-                    array[x, y] = Cell.Ground;
+                    array[y, x] = Cell.Ground;
                 }
             }
             return array;
