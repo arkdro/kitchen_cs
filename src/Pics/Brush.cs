@@ -21,7 +21,7 @@ namespace Pics {
                 case NextCellContent.Ground:
                 case NextCellContent.Snow:
                     mark_if_background_changed(next_content);
-                    go_on(next_coordinates);
+                    go_on(room, next_coordinates);
                     break;
                 case NextCellContent.Wall:
                     stop();
@@ -85,8 +85,7 @@ namespace Pics {
             return false;
         }
 
-        private void go_on(Coordinates c) {
-            coordinates = c;
+        private void go_on(Room room, Coordinates next_coordinates) {
             if (entered_into_snow()) {
                 start_making_steps();
             }
@@ -94,6 +93,10 @@ namespace Pics {
                 stop();
                 stop_making_steps();
             }
+            if(making_steps) {
+                add_step(room, coordinates);
+            }
+            coordinates = next_coordinates;
         }
 
         private void burn() {
