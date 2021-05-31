@@ -92,6 +92,7 @@ namespace Pics {
             if (exited_from_snow()) {
                 stop();
                 stop_making_steps();
+                finish_steps(room);
             }
             if(making_steps) {
                 add_step(room, coordinates);
@@ -151,6 +152,13 @@ namespace Pics {
         private bool contains_snow(Room room, Coordinates coordinates) {
             var content = room.get(coordinates);
             return content == Cell.Snow;
+        }
+
+        private void finish_steps(Room room) {
+            foreach(var coordinate in room.get_steps()) {
+                room.set(coordinate, Cell.Ground);
+            }
+            room.clear_steps();
         }
     }
 }
