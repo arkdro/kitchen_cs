@@ -4,6 +4,11 @@ using System.Linq;
 namespace Pics {
     public class Brush : MovingThing {
 
+        public Brush() {
+            coordinates = new Coordinates(0, 0);
+            direction = Direction.Stop;
+        }
+
         public void update(List<GroundMouse> ground_mice, List<SnowMouse> snow_mice, Room room) {
             var next_coordinates = Move.move(direction, coordinates);
             var next_content = get_content_at_next_coordinates(next_coordinates, ground_mice, snow_mice, room);
