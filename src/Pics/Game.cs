@@ -59,6 +59,7 @@ namespace Pics
 
         private LevelResult play_level() {
             LevelResult status;
+            delay(); // ???
             do {
                 update_brush();
                 update_mice();
@@ -70,6 +71,10 @@ namespace Pics
         }
 
         private void delay() {
+            // FIXME delay should depend on a level
+            Task.Delay(10);
+        }
+
         }
 
         private void update_brush() {
