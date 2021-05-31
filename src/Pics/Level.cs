@@ -121,6 +121,16 @@ namespace Pics {
             return mouse;
         }
 
+        private bool enough_space_for_snow_mice() {
+            var snow_width = room.snow_bottom_right_point.x - room.snow_top_left_point.x;
+            var snow_height = room.snow_bottom_right_point.y - room.snow_top_left_point.y;
+            if (snow_width >= 5 && snow_height >= 5) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         private void create_room() {
             room = new Room(config.width, config.height);
         }
