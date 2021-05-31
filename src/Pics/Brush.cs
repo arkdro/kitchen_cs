@@ -121,6 +121,7 @@ namespace Pics {
                 stop_making_steps();
                 finish_steps(room);
                 remove_unoccupied_snow(room, snow_mice);
+                room.update_stats();
             }
             if(making_steps) {
                 add_step(room, coordinates);
