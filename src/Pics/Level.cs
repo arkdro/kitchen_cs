@@ -276,7 +276,11 @@ namespace Pics {
 
         private LevelResult calculate_level_result() {
             if(brush.has_brushes_available()) {
-                return LevelResult.continue_current_level;
+                if (too_much_snow()) {
+                    return LevelResult.continue_current_level;
+                } else {
+                    return LevelResult.next_level;
+                }
             } else {
                 return LevelResult.game_over;
             }
