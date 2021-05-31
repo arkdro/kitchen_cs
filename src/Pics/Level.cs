@@ -114,14 +114,18 @@ namespace Pics {
         }
 
         private void check_brush_to_bite() {
-            check_brush();
+            var brush_result = check_brush();
+            if (brush_result == BiteResult.Bitten) {
+                brush.burn(room);
+                return;
+            }
         }
 
-        private void check_brush() {
+        private BiteResult check_brush() {
             foreach(var mouse in snow_mice) {
                 var result = mouse.check_brush_to_bite(brush);
                 if (result == BiteResult.Bitten) {
-                    return;
+                    return result;
                 }
             }
             foreach(var mouse in ground_mice) {

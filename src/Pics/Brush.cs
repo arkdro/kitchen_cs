@@ -100,7 +100,7 @@ namespace Pics {
             coordinates = next_coordinates;
         }
 
-        private void burn(Room room) {
+        internal void burn(Room room) {
             coordinates = initial_coordinates();
             spare_brushes--;
             stop();
