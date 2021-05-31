@@ -33,6 +33,22 @@ namespace Pics {
             return acc;
         }
 
+        internal (int[,], int, int) get_black_white_replica() {
+            int snow_color = 1;
+            int ground_color = 0;
+            var replica = new int[height, width];
+            for(int y = 0; y < height; y++) {
+                for(int x = 0; x < width; x++) {
+                    if (_floor[y, x] == Cell.Snow) {
+                        replica[y, x] = snow_color;
+                    } else {
+                        replica[y, x] = ground_color;
+                    }
+                }
+            }
+            return (replica, snow_color, ground_color);
+        }
+
         public void add_step(Coordinates coordinates) {
             _steps.Add(coordinates);
         }
