@@ -7,7 +7,7 @@ namespace Pics
     {
         public readonly int width;
         public readonly int height;
-        public Config(string config_file)
+        public Config()
         {
             try
             {
