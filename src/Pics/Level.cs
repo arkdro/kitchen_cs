@@ -11,11 +11,11 @@ namespace Pics {
 
         public Level(int level_number) {
             this.level_number = level_number;
+            create_brush();
+            create_mice();
         }
         public LevelResult play_level() {
             LevelResult status;
-            create_brush();
-            create_mice();
             redraw();
             delay(); // ???
             do {
