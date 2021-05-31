@@ -39,10 +39,17 @@ namespace Pics {
 
         private void create_ground_mice() {
             ground_mice = new List<GroundMouse>();
+            var mouse = new GroundMouse();
+            ground_mice.Add(mouse);
         }
 
         private void create_snow_mice() {
             snow_mice = new List<SnowMouse>();
+            var n = level_number + 1;
+            for(var i = 0; i < n; i++) {
+                var mouse = new SnowMouse();
+                snow_mice.Add(mouse);
+            }
         }
 
         private void create_brush() {
