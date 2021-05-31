@@ -4,6 +4,11 @@ namespace Pics {
         public Room() {
             _floor = filled_floor(4, 7);
         }
+        public Room(int w, int h) {
+            width = w;
+            height = h;
+            _floor = filled_floor(width, height);
+        }
         override public string ToString() {
             string acc = "";
             for(int y = 0; y < height; y++) {
