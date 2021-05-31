@@ -6,6 +6,8 @@ namespace Pics {
         private HashSet<Coordinates> _steps = default!;
         internal readonly int height;
         internal readonly int width;
+        internal Coordinates snow_top_left_point { get; private set; }
+        internal Coordinates snow_bottom_right_point { get; private set; }
         public Room() : this(4, 7) {
             _floor[1,0] = Cell.Brush;
             _floor[2,3] = Cell.SnowMouse;
@@ -83,6 +85,8 @@ namespace Pics {
             var right_x = width - 3;
             var top_y = 2;
             var bottom_y = height - 3;
+            snow_top_left_point = new Coordinates(x: left_x, y: top_y);
+            snow_bottom_right_point = new Coordinates(x: right_x, y: bottom_y);
             for (var y = top_y; y <= bottom_y; y++) {
                 for (var x = left_x; x <= right_x; x++) {
                     var coordinates = new Coordinates(x: x, y: y);
