@@ -19,5 +19,8 @@ namespace Pics
         private void prepare_new_game() {
             set_initial_level();
         }
+        private LevelResult play_level() {
+        }
+
     }
 }
