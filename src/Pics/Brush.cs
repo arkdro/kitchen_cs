@@ -110,6 +110,14 @@ namespace Pics {
             making_steps = false;
         }
 
+        private bool entered_into_snow() {
+            return backround_change_status == BackgroundChange.EnteredSnow;
+        }
+
+        private bool exited_from_snow() {
+            return backround_change_status == BackgroundChange.LeftSnow;
+        }
+
         private void mark_if_background_changed(NextCellContent next_content) {
             if(previous_background == NextCellContent.Ground && next_content == NextCellContent.Snow) {
                 previous_background = next_content;
