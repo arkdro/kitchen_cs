@@ -1,6 +1,6 @@
 namespace Pics {
     public abstract class MovingThing {
-        Direction direction;
+        protected Direction direction;
         int speed;
         protected Coordinates coordinates;
     }
