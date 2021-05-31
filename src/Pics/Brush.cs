@@ -103,6 +103,7 @@ namespace Pics {
                 start_making_steps();
             }
             if (exited_from_snow()) {
+                add_step(room, coordinates);
                 stop();
                 stop_making_steps();
                 finish_steps(room);
