@@ -12,6 +12,7 @@ namespace Pics
 
         public void Run()
         {
+            prepare_new_game();
             game_loop();
             Console.WriteLine("Done.");
         }
