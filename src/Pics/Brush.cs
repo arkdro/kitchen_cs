@@ -6,7 +6,7 @@ namespace Pics {
 
         private int spare_brushes;
         public Brush() {
-            coordinates = new Coordinates(0, 0);
+            coordinates = initial_coordinates();
             direction = Direction.Stop;
             spare_brushes = 5;
         }
