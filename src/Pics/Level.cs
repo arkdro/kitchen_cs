@@ -165,6 +165,30 @@ namespace Pics {
             Console.WriteLine("Room:");
             Console.WriteLine(room);
         }
+        private string choose_current_cell_symbol(Coordinates coordinates) {
+            string symbol;
+            var content = get_current_coordinates_content(coordinates);
+            switch(content) {
+                case Cell.Brush:
+                    symbol = Cell.Brush.CellName();
+                    break;
+                case Cell.Step:
+                    symbol = Cell.Step.CellName();
+                    break;
+                case Cell.GroundMouse:
+                    symbol = Cell.GroundMouse.CellName();
+                    break;
+                case Cell.SnowMouse:
+                    symbol = Cell.SnowMouse.CellName();
+                    break;
+                default:
+                    var cell = room.get(coordinates);
+                    symbol = cell.CellName();
+                    break;
+            }
+            return symbol;
+        }
+
         private Cell get_current_coordinates_content(Coordinates coordinates) {
             if(brush.coordinates == coordinates) {
                 return Cell.Brush;
