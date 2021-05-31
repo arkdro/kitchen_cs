@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Pics {
     public abstract class Mouse : MovingThing {
         private readonly Cell preferred_ground;
@@ -18,6 +20,14 @@ namespace Pics {
 
         public BiteResult check_brush_to_bite(Brush brush) {
             if (coordinates == brush.coordinates) {
+                return BiteResult.Bitten;
+            } else {
+                return BiteResult.Missed;
+            }
+        }
+
+        internal BiteResult check_brush_steps_to_bite(HashSet<Coordinates> steps) {
+            if (steps.Contains(coordinates)) {
                 return BiteResult.Bitten;
             } else {
                 return BiteResult.Missed;
