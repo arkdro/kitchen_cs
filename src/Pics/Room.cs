@@ -14,7 +14,7 @@ namespace Pics {
             width = w;
             height = h;
             _floor = filled_floor(width, height);
-            _steps = new HashSet<Coordinates>();
+            init_steps();
         }
         override public string ToString() {
             string acc = "";
@@ -36,6 +36,10 @@ namespace Pics {
 
         public Cell get(Coordinates coordinates) {
             return _floor[coordinates.x, coordinates.y];
+        }
+
+        private void init_steps() {
+            _steps = new HashSet<Coordinates>();
         }
 
         private Cell[,] filled_floor(int width, int height) {
