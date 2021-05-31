@@ -53,7 +53,7 @@ namespace Pics {
 
         private void bounce_corner(Room room) {
             if(can_bounce_back(room)) {
-                direction.flip();
+                direction = direction.flip();
                 coordinates = Move.move(direction, coordinates);
             } else {
                 stop();
@@ -62,6 +62,7 @@ namespace Pics {
 
         private void bounce_vertical_wall(Room room) {
             if (can_bounce_vertical_wall(room)) {
+                direction = direction.flip_vertical_wall();
             } else {
                 bounce_corner(room);
             }
@@ -69,6 +70,7 @@ namespace Pics {
 
         private void bounce_horisontal_wall(Room room) {
             if (can_bounce_horisontal_wall(room)) {
+                direction = direction.flip_horizontal_wall();
             } else {
                 bounce_corner(room);
             }
