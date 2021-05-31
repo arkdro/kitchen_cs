@@ -7,6 +7,8 @@ namespace Pics {
     public class Level {
 
         public static int MAX_LEVEL = 10;
+        public static double LEVEL_FINISH_SNOW_RATIO = 1.0 / 3.0;
+
         private Config config;
         private int level_number;
         private Brush brush = default!;
@@ -277,6 +279,16 @@ namespace Pics {
                 return LevelResult.continue_current_level;
             } else {
                 return LevelResult.game_over;
+            }
+        }
+
+        private bool too_much_snow() {
+            (int initial_snow, int current_snow) = room.get_stats();
+            double ratio = (double) current_snow / (double) initial_snow;
+            if (ratio > LEVEL_FINISH_SNOW_RATIO) {
+                return true;
+            } else {
+                return false;
             }
         }
 
