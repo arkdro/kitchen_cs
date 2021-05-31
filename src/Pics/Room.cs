@@ -38,6 +38,10 @@ namespace Pics {
             return _floor[coordinates.x, coordinates.y];
         }
 
+        public void clear_steps() {
+            init_steps();
+        }
+
         private void init_steps() {
             _steps = new HashSet<Coordinates>();
         }
