@@ -81,6 +81,10 @@ namespace Pics {
             return Direction.DownLeft;
         }
 
+        private Direction snow_mouse_initial_direction(int index) {
+            return Direction.DownLeft;
+        }
+
         private void create_snow_mice() {
             snow_mice = new List<SnowMouse>();
             var n = level_number;
