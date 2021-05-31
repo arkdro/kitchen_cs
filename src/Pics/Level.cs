@@ -162,9 +162,20 @@ namespace Pics {
         }
 
         private void redraw() {
-            Console.WriteLine("Room:");
-            Console.WriteLine(room);
+            Console.WriteLine("Room redraw:");
+            string acc = "";
+            for(int y = 0; y < room.height; y++) {
+                string line = "";
+                for(int x = 0; x < room.width; x++) {
+                    var coordinates = new Coordinates(x: x, y: y);
+                    var symbol = choose_current_cell_symbol(coordinates);
+                    line += symbol;
+                }
+                acc += line + "\n";
+            }
+            Console.WriteLine(acc);
         }
+
         private string choose_current_cell_symbol(Coordinates coordinates) {
             string symbol;
             var content = get_current_coordinates_content(coordinates);
