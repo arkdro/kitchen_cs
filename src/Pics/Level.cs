@@ -7,10 +7,10 @@ namespace Pics {
     public class Level {
         private Config config;
         private int level_number;
-        private Brush brush;
-        private List<GroundMouse> ground_mice;
-        private List<SnowMouse> snow_mice;
-        private Room room;
+        private Brush brush = default!;
+        private List<GroundMouse> ground_mice = default!;
+        private List<SnowMouse> snow_mice = default!;
+        private Room room = default!;
 
         public Level(Config config, int level_number) {
             this.config = config;
