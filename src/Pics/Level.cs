@@ -98,7 +98,7 @@ namespace Pics {
         }
 
         private Direction snow_mouse_initial_direction(int index) {
-            return Direction.DownLeft;
+            return index.index_to_direction();
         }
 
         private void create_snow_mice() {
