@@ -54,6 +54,9 @@ namespace Pics {
             if(is_next_cell_outer_wall(next_coordinates, room)) {
                 return NextCellContent.Wall;
             }
+            if(is_next_cell_snow(next_coordinates, room)) {
+                return NextCellContent.Snow;
+            }
             return NextCellContent.Ground;
         }
 
@@ -90,6 +93,11 @@ namespace Pics {
             return false;
         }
 
+
+        private bool is_next_cell_snow(Coordinates next_coordinates, Room room) {
+            var content = room.try_get(coordinates);
+            return content == Cell.Snow;
+        }
         private void go_on(Room room, Coordinates next_coordinates) {
             if (entered_into_snow()) {
                 start_making_steps();
