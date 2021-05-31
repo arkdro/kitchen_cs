@@ -80,21 +80,22 @@ namespace Pics {
 
         private NextCell get_next_cell_content(Room room) {
             var next_coordinates = Move.move(direction, coordinates);
-            var next_cell = room.get(next_coordinates);
-            if (next_cell == preferred_ground) {
+            var next_cell = room.try_get(next_coordinates);
+            if (next_cell != null && next_cell == preferred_ground) {
                 return NextCell.Free;
             }
-            var delta = direction.direction_to_delta();
-            var vertically_changed_coordinates = new Coordinates(x: next_coordinates.x, y: coordinates.y + delta.y);
-            var horizontally_changed_coordinates = new Coordinates(x: next_coordinates.x + delta.x, y: coordinates.y);
-            var vertical_cell = room.get(vertically_changed_coordinates);
-            var horizontal_cell = room.get(horizontally_changed_coordinates);
-            if( vertical_cell != preferred_ground && horizontal_cell != preferred_ground) {
+            var vertically_changed_coordinates = new Coordinates(x: coordinates.x, y: next_coordinates.y);
+            var horizontally_changed_coordinates = new Coordinates(x: next_coordinates.x, y: coordinates.y);
+            var vertical_cell = room.try_get(vertically_changed_coordinates);
+            var horizontal_cell = room.try_get(horizontally_changed_coordinates);
+            if( vertical_cell == preferred_ground && horizontal_cell == preferred_ground) {
+                return NextCell.Corner;
+            } else if( vertical_cell != preferred_ground && horizontal_cell != preferred_ground) {
                 return NextCell.Corner;
             } else if( vertical_cell != preferred_ground) {
-                return NextCell.VerticallWall;
-            } else {
                 return NextCell.HorisontalWall;
+            } else {
+                return NextCell.VerticallWall;
             }
         }
 
