@@ -27,7 +27,7 @@ namespace Pics {
                     stop();
                     break;
                 case NextCellContent.Mouse:
-                    burn();
+                    burn(room);
                     break;
             };
         }
@@ -100,11 +100,11 @@ namespace Pics {
             coordinates = next_coordinates;
         }
 
-        private void burn() {
+        private void burn(Room room) {
             coordinates = initial_coordinates();
             spare_brushes--;
             stop();
-            stop_making_steps();
+            burn_steps(room);
         }
 
         private Coordinates initial_coordinates() {
@@ -113,6 +113,11 @@ namespace Pics {
 
         private void stop() {
             direction = Direction.Stop;
+        }
+
+        private void burn_steps(Room room) {
+            stop_making_steps();
+            clear_steps(room);
         }
 
         private void start_making_steps() {
