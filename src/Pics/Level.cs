@@ -167,7 +167,7 @@ namespace Pics {
         }
         private LevelResult calculate_level_result() {
             if(brush.has_brushes_available()) {
-                return LevelResult.next_level;
+                return LevelResult.continue_current_level;
             } else {
                 return LevelResult.game_over;
             }
