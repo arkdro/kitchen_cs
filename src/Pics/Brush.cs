@@ -83,6 +83,7 @@ namespace Pics {
         }
 
         private void stop() {
+            direction = Direction.Stop;
         }
     }
 }
