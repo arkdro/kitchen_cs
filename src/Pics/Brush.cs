@@ -5,6 +5,7 @@ namespace Pics {
     public class Brush : MovingThing {
 
         private int spare_brushes;
+        private bool making_steps = false;
         public Brush() {
             coordinates = initial_coordinates();
             direction = Direction.Stop;
@@ -97,5 +98,14 @@ namespace Pics {
         private void stop() {
             direction = Direction.Stop;
         }
+
+        private void start_making_steps() {
+            making_steps = true;
+        }
+
+        private void stop_making_steps() {
+            making_steps = false;
+        }
+
     }
 }
