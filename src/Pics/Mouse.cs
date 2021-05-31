@@ -35,6 +35,15 @@ namespace Pics {
                 return BiteResult.Missed;
             }
         }
+
+        private void bounce_corner(Room room) {
+            if(can_bounce_back(room)) {
+                direction.flip();
+                coordinates = Move.move(direction, coordinates);
+            } else {
+                stop();
+            }
+        }
         private bool can_bounce_back(Room room) {
             var backward_direction = direction.flip();
             var backward_coordinates = Move.move(backward_direction, coordinates);
