@@ -30,6 +30,22 @@ namespace Pics {
             return NextCellContent.Ground;
         }
 
+        private bool is_next_cell_outer_wall(Coordinates next_coordinates, Room room) {
+            if(next_coordinates.x >= room.width) {
+                return true;
+            }
+            if(next_coordinates.x < 0) {
+                return true;
+            }
+            if(next_coordinates.y >= room.height) {
+                return true;
+            }
+            if(next_coordinates.y < 0) {
+                return true;
+            }
+            return false;
+        }
+
         private void go_on(Coordinates c) {
             coordinates = c;
         }
