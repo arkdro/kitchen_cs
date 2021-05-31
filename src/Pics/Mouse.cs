@@ -15,5 +15,13 @@ namespace Pics {
         public void update() {
             //
         }
+
+        public BiteResult check_brush_to_bite(Brush brush) {
+            if (coordinates == brush.coordinates) {
+                return BiteResult.Bitten;
+            } else {
+                return BiteResult.Missed;
+            }
+        }
     }
 }

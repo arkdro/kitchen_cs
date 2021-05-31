@@ -98,6 +98,7 @@ namespace Pics {
         private void update_mice() {
             update_ground_mice();
             update_snow_mice();
+            check_brush_to_bite();
         }
 
         private void update_ground_mice() {
@@ -111,6 +112,26 @@ namespace Pics {
                 mouse.update();
             }
         }
+
+        private void check_brush_to_bite() {
+            check_brush();
+        }
+
+        private void check_brush() {
+            foreach(var mouse in snow_mice) {
+                var result = mouse.check_brush_to_bite(brush);
+                if (result == BiteResult.Bitten) {
+                    return;
+                }
+            }
+            foreach(var mouse in ground_mice) {
+                var result = mouse.check_brush_to_bite(brush);
+                if (result == BiteResult.Bitten) {
+                    return;
+                }
+            }
+        }
+
         private void redraw() {
             Console.WriteLine("Room:");
             Console.WriteLine(room);
