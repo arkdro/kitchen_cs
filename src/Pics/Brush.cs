@@ -136,7 +136,7 @@ namespace Pics {
         }
 
         private Coordinates initial_coordinates() {
-            return new Coordinates(0, 0);
+            return new Coordinates(x: 0, y: 0);
         }
 
         private void stop() {
