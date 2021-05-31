@@ -4,6 +4,19 @@ namespace Pics {
         public Room() {
             _floor = filled_floor(4, 7);
         }
+        override public string ToString() {
+            string acc = "";
+            for(int y = 0; y < height; y++) {
+                string line = "";
+                for(int x = 0; x < width; x++) {
+                    var cell = _floor[x, y];
+                    var symbol = cell.CellName();
+                    line += symbol;
+                }
+                acc += line + "\n";
+            }
+            return acc;
+        }
         private Cell[,] filled_floor(int width, int height) {
             var array = new Cell[width,height];
             for(int y = 0; y < height; y++) {
