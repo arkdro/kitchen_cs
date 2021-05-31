@@ -7,8 +7,8 @@ namespace Pics {
         internal readonly int height;
         internal readonly int width;
         public Room() : this(4, 7) {
-            _floor[1,0] = Cell.Food;
-            _floor[2,3] = Cell.Animal;
+            _floor[1,0] = Cell.Brush;
+            _floor[2,3] = Cell.SnowMouse;
         }
         public Room(int w, int h) {
             width = w;
