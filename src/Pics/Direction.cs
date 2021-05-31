@@ -1,7 +1,7 @@
 namespace Pics {
     public enum Direction {
         UpLeft, Up, UpRight,
-        Left, Right,
+        Left, Stop, Right,
         DownLeft, Down, DownRight
     }
 }
