@@ -109,7 +109,7 @@ namespace Pics {
 
         private void update_snow_mice() {
             foreach(var mouse in snow_mice) {
-                mouse.update();
+                mouse.update(room);
             }
         }
 
