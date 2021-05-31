@@ -49,8 +49,30 @@ namespace Pics {
         }
 
         private GroundMouse create_ground_mouse() {
-            var mouse = new GroundMouse();
+            var coordinates = ground_mouse_initial_coordinates();
+            var speed = ground_mouse_initial_speed();
+            var direction = ground_mouse_initial_direction();
+            var mouse = new GroundMouse(coordinates, speed, direction);
             return mouse;
+        }
+
+        private Coordinates ground_mouse_initial_coordinates() {
+            var y = 0;
+            var x = 0;
+            if (config.width % 2 == 0) {
+                x = config.width / 2;
+            } else {
+                x = config.width / 2 + 1;
+            }
+            return new Coordinates(x, y);
+        }
+
+        private int ground_mouse_initial_speed() {
+            return level_number;
+        }
+
+        private Direction ground_mouse_initial_direction() {
+            return Direction.DownLeft;
         }
 
         private void create_snow_mice() {
