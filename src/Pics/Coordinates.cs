@@ -3,6 +3,11 @@ using System;
 namespace Pics {
     public class Coordinates : IEquatable<Coordinates> {
 
+        public override string ToString()
+        {
+            return $"Coordinates(x: {x}, y: {y})";
+        }
+
         public override bool Equals(object? obj) {
             if (Object.ReferenceEquals(obj, null)) {
                 return false;
