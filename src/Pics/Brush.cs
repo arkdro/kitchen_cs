@@ -14,7 +14,8 @@ namespace Pics {
             spare_brushes = 5;
         }
 
-        public void update(List<GroundMouse> ground_mice, List<SnowMouse> snow_mice, Room room) {
+        public void update(Direction new_direction, List<GroundMouse> ground_mice, List<SnowMouse> snow_mice, Room room) {
+            direction = new_direction;
             var next_coordinates = Move.move(direction, coordinates);
             var next_content = get_content_at_next_coordinates(next_coordinates, ground_mice, snow_mice, room);
             switch(next_content) {
