@@ -7,6 +7,7 @@ namespace Pics
     {
         private int level;
         private Config config;
+        private Brush brush;
 
         public Game() {
             config = new Config();
@@ -60,6 +61,7 @@ namespace Pics
 
         private LevelResult play_level() {
             LevelResult status;
+            create_brush();
             delay(); // ???
             do {
                 update_brush();
@@ -76,6 +78,10 @@ namespace Pics
             Task.Delay(10);
         }
 
+        }
+
+        private void create_brush() {
+            brush = new Brush();
         }
 
         private void update_brush() {
