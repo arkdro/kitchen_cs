@@ -65,7 +65,7 @@ namespace Pics {
         }
 
         private void update_brush() {
-            brush.update();
+            brush.update(ground_mice, snow_mice, room);
         }
 
         private void update_mice() {
