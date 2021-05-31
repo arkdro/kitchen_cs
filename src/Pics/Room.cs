@@ -4,6 +4,8 @@ namespace Pics {
     public class Room {
         private Cell[,] _floor;
         private HashSet<Coordinates> _steps = default!;
+        private int initial_snow = 0;
+        private int current_snow = 0;
         internal readonly int height;
         internal readonly int width;
         internal Coordinates snow_top_left_point { get; private set; }
@@ -61,6 +63,14 @@ namespace Pics {
             }
         }
 
+        internal void update_stats() {
+            current_snow = get_current_snow_count();
+        }
+
+        internal (int, int) get_stats() {
+            return (initial_snow, current_snow);
+        }
+
         public void add_step(Coordinates coordinates) {
             _steps.Add(coordinates);
         }
@@ -95,6 +105,26 @@ namespace Pics {
             _steps = new HashSet<Coordinates>();
         }
 
+        private int get_initial_snow_count() {
+            int snow_width = snow_bottom_right_point.x - snow_top_left_point.x + 1;
+            int snow_height = snow_bottom_right_point.y - snow_top_left_point.y + 1;
+            return snow_width * snow_height;
+        }
+
+        private int get_current_snow_count() {
+            int counter = 0;
+            for(int y = 0; y < height; y++) {
+                for(int x = 0; x < width; x++) {
+                    var coordinates = new Coordinates(x: x, y: y);
+                    var color = get(coordinates);
+                    if (color == Cell.Snow) {
+                        counter++;
+                    }
+                }
+            }
+            return counter;
+        }
+
         private Cell[,] filled_floor(int width, int height) {
             var array = new Cell[height, width];
             for(int y = 0; y < height; y++) {
@@ -121,6 +151,8 @@ namespace Pics {
                     set(coordinates, Cell.Snow);
                 }
             }
+            initial_snow = get_initial_snow_count();
+            current_snow = get_current_snow_count();
         }
     }
 }
