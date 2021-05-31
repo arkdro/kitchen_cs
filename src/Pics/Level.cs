@@ -165,6 +165,14 @@ namespace Pics {
             Console.WriteLine("Room:");
             Console.WriteLine(room);
         }
+        private bool contains_snow_mouse(Coordinates coordinates) {
+            return brush.is_next_cell_snow_mouse(coordinates, snow_mice);
+        }
+
+        private bool contains_ground_mouse(Coordinates coordinates) {
+            return brush.is_next_cell_ground_mouse(coordinates, ground_mice);
+        }
+
         private LevelResult calculate_level_result() {
             if(brush.has_brushes_available()) {
                 return LevelResult.continue_current_level;

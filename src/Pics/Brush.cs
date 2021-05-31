@@ -62,11 +62,11 @@ namespace Pics {
                 || is_next_cell_snow_mouse(next_coordinates, snow_mice);
         }
 
-        private bool is_next_cell_ground_mouse(Coordinates next_coordinates, List<GroundMouse> ground_mice) {
+        internal bool is_next_cell_ground_mouse(Coordinates next_coordinates, List<GroundMouse> ground_mice) {
             return is_mouse_at_coordinates(next_coordinates, ground_mice);
         }
 
-        private bool is_next_cell_snow_mouse(Coordinates next_coordinates, List<SnowMouse> snow_mice) {
+        internal bool is_next_cell_snow_mouse(Coordinates next_coordinates, List<SnowMouse> snow_mice) {
             return is_mouse_at_coordinates(next_coordinates, snow_mice);
         }
 
