@@ -110,6 +110,14 @@ namespace Pics {
             }
         }
 
+        private SnowMouse create_snow_mouse(int total, int index) {
+            var coordinates = snow_mouse_initial_coordinates(total, index);
+            var speed = snow_mouse_initial_speed();
+            var direction = snow_mouse_initial_direction(index);
+            var mouse = new SnowMouse(coordinates, speed, direction);
+            return mouse;
+        }
+
         private void create_room() {
             room = new Room(config.width, config.height);
         }
