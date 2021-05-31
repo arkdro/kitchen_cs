@@ -87,6 +87,13 @@ namespace Pics {
 
         private void go_on(Coordinates c) {
             coordinates = c;
+            if (entered_into_snow()) {
+                start_making_steps();
+            }
+            if (exited_from_snow()) {
+                stop();
+                stop_making_steps();
+            }
         }
 
         private void burn() {
