@@ -59,5 +59,19 @@ namespace Pics {
             }
             throw new ArgumentException($"Unknown Direction to get delta: {input}");
         }
+
+        public static Direction index_to_direction(this int index) {
+            switch (index % 8) {
+                case 0: return Direction.UpLeft;
+                case 1: return Direction.Up;
+                case 2: return Direction.UpRight;
+                case 3: return Direction.Left;
+                case 4: return Direction.Right;
+                case 5: return Direction.DownLeft;
+                case 6: return Direction.Down;
+                case 7: return Direction.DownRight;
+                default: return Direction.Stop;
+            }
+        }
     }
 }
