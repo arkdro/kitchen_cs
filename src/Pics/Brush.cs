@@ -27,6 +27,9 @@ namespace Pics {
                     go_on(room, next_coordinates, snow_mice);
                     burn(room);
                     break;
+                case NextCellContent.Mouse:
+                    burn(room);
+                    break;
                 case NextCellContent.Ground:
                 case NextCellContent.Snow:
                     mark_if_background_changed(next_content);
@@ -34,9 +37,6 @@ namespace Pics {
                     break;
                 case NextCellContent.Wall:
                     stop();
-                    break;
-                case NextCellContent.Mouse:
-                    burn(room);
                     break;
             };
         }
