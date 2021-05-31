@@ -49,6 +49,18 @@ namespace Pics {
             return (replica, snow_color, ground_color);
         }
 
+        internal void copy_ground_from_replica(Replica replica) {
+            for(int y = 0; y < height; y++) {
+                for(int x = 0; x < width; x++) {
+                    var coordinates = new Coordinates(x: x, y: y);
+                    var color = replica.get(coordinates);
+                    if (color == replica.ground_color) {
+                        set(coordinates, Cell.Ground);
+                    }
+                }
+            }
+        }
+
         public void add_step(Coordinates coordinates) {
             _steps.Add(coordinates);
         }
