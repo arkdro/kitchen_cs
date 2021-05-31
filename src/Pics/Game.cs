@@ -4,9 +4,13 @@ namespace Pics
 {
     class Game
     {
+        private Config config;
+        public Game() {
+            config = new Config();
+        }
+
         public void Run()
         {
-            var config = new Config();
             var r = new Room(config.width, config.height);
             Console.WriteLine("Room:");
             Console.WriteLine(r);
