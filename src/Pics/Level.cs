@@ -234,4 +234,31 @@ namespace Pics {
             return KeyboardInput.get_direction(brush.get_direction());
         }
     }
+
+    internal class Placement {
+
+        internal int placement_total;
+        internal int one_piece_volume;
+        internal int snow_width;
+        internal int snow_height;
+        internal int width_gap;
+        internal int height_gap;
+
+        public static Placement get_placement_parameters(Room room, int total_mice) {
+            var p = new Placement();
+            init_placement_parameters(p, room, total_mice);
+            return p;
+        }
+
+        private static void init_placement_parameters(Placement p, Room room, int total_mice) {
+            p.width_gap = 2;
+            p.height_gap = 2;
+            p.snow_width = room.snow_bottom_right_point.x - room.snow_top_left_point.x;
+            p.snow_height = room.snow_bottom_right_point.y - room.snow_top_left_point.y;
+            var placement_width = p.snow_width - p.width_gap;
+            var placement_height = p.snow_height - p.height_gap;
+            p.placement_total = placement_width * placement_height;
+            p.one_piece_volume = p.placement_total / total_mice;
+        }
+    }
 }
