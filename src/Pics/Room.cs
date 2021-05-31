@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace Pics {
     public class Room {
         private Cell[,] _floor;
-        private HashSet<Coordinates> _steps;
+        private HashSet<Coordinates> _steps = default!;
         internal readonly int height;
         internal readonly int width;
         public Room() : this(4, 7) {
