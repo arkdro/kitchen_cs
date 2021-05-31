@@ -5,6 +5,8 @@ using System.Threading;
 namespace Pics {
 
     public class Level {
+
+        public static int MAX_LEVEL = 10;
         private Config config;
         private int level_number;
         private Brush brush = default!;
@@ -35,8 +37,11 @@ namespace Pics {
             return status;
         }
         private void delay() {
-            // FIXME delay should depend on a level
-            Thread.Sleep(1000);
+            if (level_number <= MAX_LEVEL) {
+                int delay = (MAX_LEVEL - level_number) * 100;
+                Thread.Sleep(delay);
+            }
+            Thread.Sleep(5);
         }
 
         private void create_mice() {
