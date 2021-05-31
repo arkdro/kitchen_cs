@@ -16,6 +16,9 @@ namespace Pics {
 
         public void update() {
             //
+            if(direction == Direction.Stop || speed == 0) {
+                return;
+            }
         }
 
         public BiteResult check_brush_to_bite(Brush brush) {
