@@ -18,7 +18,7 @@ namespace Pics {
                     go_on(next_coordinates);
                     break;
                 case NextCellContent.Wall:
-                    bounce();
+                    stop();
                     break;
                 case NextCellContent.Mouse:
                     burn();
@@ -82,7 +82,7 @@ namespace Pics {
         private void burn() {
         }
 
-        private void bounce() {
+        private void stop() {
         }
     }
 }
