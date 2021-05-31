@@ -75,6 +75,10 @@ namespace Pics {
             _steps.Add(coordinates);
         }
 
+        public bool contains_step(Coordinates coordinates) {
+            return _steps.Contains(coordinates);
+        }
+
         public Cell get(Coordinates coordinates) {
             return _floor[coordinates.y, coordinates.x];
         }

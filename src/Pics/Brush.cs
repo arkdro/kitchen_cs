@@ -19,6 +19,9 @@ namespace Pics {
             var next_coordinates = Move.move(direction, coordinates);
             var next_content = get_content_at_next_coordinates(next_coordinates, ground_mice, snow_mice, room);
             switch(next_content) {
+                case NextCellContent.Step:
+                    burn(room);
+                    break;
                 case NextCellContent.GroundAndMouse:
                     mark_if_background_changed(next_content);
                     go_on(room, next_coordinates, snow_mice);
@@ -50,10 +53,14 @@ namespace Pics {
             Ground,
             Snow,
             Wall,
+            Step,
             Mouse,
             GroundAndMouse
         }
         private NextCellContent get_content_at_next_coordinates(Coordinates next_coordinates, List<GroundMouse> ground_mice, List<SnowMouse> snow_mice, Room room) {
+            if(is_next_cell_step(next_coordinates, room)) {
+                return NextCellContent.Step;
+            }
             if(is_next_cell_ground(next_coordinates, room) && is_next_cell_ground_mouse(next_coordinates, ground_mice)) {
                 return NextCellContent.GroundAndMouse;
             }
@@ -100,6 +107,10 @@ namespace Pics {
                 return true;
             }
             return false;
+        }
+
+        private bool is_next_cell_step(Coordinates next_coordinates, Room room) {
+            return room.contains_step(next_coordinates);
         }
 
         private bool is_next_cell_ground(Coordinates next_coordinates, Room room) {
