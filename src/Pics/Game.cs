@@ -58,6 +58,34 @@ namespace Pics
         }
 
         private LevelResult play_level() {
+            LevelResult status;
+            do {
+                update_brush();
+                update_mice();
+                redraw();
+                status = calculate_level_result();
+                delay();
+            } while (status == LevelResult.continue_current_level);
+            return status;
+        }
+
+        private void delay() {
+        }
+
+        private void update_brush() {
+            brush.update();
+        }
+
+        private void update_mice() {
+            foreach(var mouse in mice) {
+                mouse.update();
+            }
+        }
+
+        private void redraw() {
+        }
+
+        private LevelResult calculate_level_result() {
             return LevelResult.next_level;
         }
 
