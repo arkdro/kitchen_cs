@@ -66,6 +66,7 @@ namespace Pics
             LevelResult status;
             create_brush();
             create_mice();
+            redraw();
             delay(); // ???
             do {
                 update_brush();
