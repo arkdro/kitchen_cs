@@ -69,6 +69,12 @@ namespace Pics {
             return new Coordinates(x, y);
         }
 
+        private Coordinates snow_mouse_initial_coordinates(int total_mice, int index) {
+            var placement = Placement.get_placement_parameters(room, total_mice);
+            var coordinates = build_mouse_coordinates(room, index, placement);
+            return coordinates;
+        }
+
         private Coordinates build_mouse_coordinates(Room room, int index, Placement placement) {
             int start_point = placement.one_piece_volume * index;
             int end_point = Math.Min(start_point + placement.one_piece_volume, placement.placement_total);
