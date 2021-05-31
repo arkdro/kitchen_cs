@@ -30,7 +30,7 @@ namespace Pics
         }
 
         private bool is_insane_level() {
-            return level > 10;
+            return level > Level.MAX_LEVEL;
         }
         private void game_loop() {
             bool keep_playing = true;
