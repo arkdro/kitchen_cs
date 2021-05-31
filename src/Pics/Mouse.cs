@@ -35,5 +35,9 @@ namespace Pics {
                 return BiteResult.Missed;
             }
         }
+        private void stop() {
+            direction = Direction.Stop;
+            speed = 0;
+        }
     }
 }
