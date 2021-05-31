@@ -58,7 +58,7 @@ namespace Pics {
         }
 
         private void create_room() {
-            var r = new Room(config.width, config.height);
+            room = new Room(config.width, config.height);
         }
         private void create_brush() {
             brush = new Brush();
