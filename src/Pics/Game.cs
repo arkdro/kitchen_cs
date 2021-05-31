@@ -15,5 +15,9 @@ namespace Pics
             Console.WriteLine("Room:");
             Console.WriteLine(r);
         }
+
+        private void prepare_new_game() {
+            set_initial_level();
+        }
     }
 }
