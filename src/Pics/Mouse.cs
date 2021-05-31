@@ -11,5 +11,9 @@ namespace Pics {
                     break;
             }
         }
+
+        public void update() {
+            //
+        }
     }
 }
