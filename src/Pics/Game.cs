@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Pics
@@ -8,6 +9,8 @@ namespace Pics
         private int level;
         private Config config;
         private Brush brush;
+        private List<GroundMouse> ground_mice;
+        private List<SnowMouse> snow_mice;
 
         public Game() {
             config = new Config();
@@ -62,6 +65,7 @@ namespace Pics
         private LevelResult play_level() {
             LevelResult status;
             create_brush();
+            create_mice();
             delay(); // ???
             do {
                 update_brush();
@@ -78,6 +82,18 @@ namespace Pics
             Task.Delay(10);
         }
 
+        private void create_mice() {
+            create_ground_mice();
+            create_snow_mice();
+        }
+
+        private void create_ground_mice() {
+            ground_mice = new List<GroundMouse>();
+        }
+
+        private void create_snow_mice() {
+            snow_mice = new List<SnowMouse>();
+        }
         }
 
         private void create_brush() {
