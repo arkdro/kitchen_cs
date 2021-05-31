@@ -36,6 +36,10 @@ namespace Pics {
             return spare_brushes >= 0;
         }
 
+        public Direction get_direction() {
+            return direction;
+        }
+
         private enum NextCellContent {
             Ground,
             Snow,

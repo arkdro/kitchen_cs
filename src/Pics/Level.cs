@@ -11,6 +11,7 @@ namespace Pics {
         private List<GroundMouse> ground_mice = default!;
         private List<SnowMouse> snow_mice = default!;
         private Room room = default!;
+        private KeyboardInput input = new KeyboardInput();
 
         public Level(Config config, int level_number) {
             this.config = config;
@@ -24,7 +25,8 @@ namespace Pics {
             redraw();
             delay(); // ???
             do {
-                update_brush();
+                var brush_new_direction = get_direction_from_input();
+                update_brush(brush_new_direction);
                 update_mice();
                 redraw();
                 status = calculate_level_result();
@@ -91,7 +93,7 @@ namespace Pics {
             brush = new Brush();
         }
 
-        private void update_brush() {
+        private void update_brush(Direction new_direction) {
             brush.update(ground_mice, snow_mice, room);
         }
 
@@ -169,6 +171,10 @@ namespace Pics {
             } else {
                 return LevelResult.game_over;
             }
+        }
+
+        private Direction get_direction_from_input() {
+            return KeyboardInput.get_direction(brush.get_direction());
         }
     }
 }
