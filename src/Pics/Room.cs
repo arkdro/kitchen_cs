@@ -38,6 +38,16 @@ namespace Pics {
             return _floor[coordinates.x, coordinates.y];
         }
 
+        public Cell? try_get(Coordinates coordinates) {
+            if (coordinates.x < 0 || coordinates.x >= width) {
+                return null;
+            }
+            if (coordinates.y < 0 || coordinates.y >= height) {
+                return null;
+            }
+            return get(coordinates);
+        }
+
         public void set(Coordinates coordinates, Cell content) {
             _floor[coordinates.x, coordinates.y] = content;
         }
