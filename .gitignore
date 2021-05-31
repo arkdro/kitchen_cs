@@ -9,9 +9,11 @@ bin
 
 ### Linux ###
 *~
+*.swp
 
 ### vsc ###
 .ionide/
+*.code-workspace
 
 ### json ###
 *.json-[0-9]
