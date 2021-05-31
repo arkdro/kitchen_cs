@@ -21,5 +21,17 @@ namespace Pics {
             throw new ArgumentException($"Unknown Direction to flip: {input}");
         }
 
+        public static Direction flip_vertical_wall (this Direction input) {
+            switch(input) {
+                case Direction.UpLeft: return Direction.UpRight;
+                case Direction.UpRight: return Direction.UpLeft;
+                case Direction.Left: return Direction.Right;
+                case Direction.Right: return Direction.Left;
+                case Direction.DownLeft: return Direction.DownRight;
+                case Direction.DownRight: return Direction.DownLeft;
+            }
+            throw new ArgumentException($"Unknown Direction to flip vertical wall: {input}");
+        }
+
     }
 }
