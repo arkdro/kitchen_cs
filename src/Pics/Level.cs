@@ -94,7 +94,7 @@ namespace Pics {
         }
 
         private void update_brush(Direction new_direction) {
-            brush.update(ground_mice, snow_mice, room);
+            brush.update(new_direction, ground_mice, snow_mice, room);
         }
 
         private void update_mice() {
