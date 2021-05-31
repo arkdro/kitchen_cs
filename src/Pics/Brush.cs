@@ -19,6 +19,11 @@ namespace Pics {
             var next_coordinates = Move.move(direction, coordinates);
             var next_content = get_content_at_next_coordinates(next_coordinates, ground_mice, snow_mice, room);
             switch(next_content) {
+                case NextCellContent.GroundAndMouse:
+                    mark_if_background_changed(next_content);
+                    go_on(room, next_coordinates);
+                    burn(room);
+                    break;
                 case NextCellContent.Ground:
                 case NextCellContent.Snow:
                     mark_if_background_changed(next_content);
@@ -45,9 +50,13 @@ namespace Pics {
             Ground,
             Snow,
             Wall,
-            Mouse
+            Mouse,
+            GroundAndMouse
         }
         private NextCellContent get_content_at_next_coordinates(Coordinates next_coordinates, List<GroundMouse> ground_mice, List<SnowMouse> snow_mice, Room room) {
+            if(is_next_cell_ground(next_coordinates, room) && is_next_cell_ground_mouse(next_coordinates, ground_mice)) {
+                return NextCellContent.GroundAndMouse;
+            }
             if(is_next_cell_mouse(next_coordinates, ground_mice, snow_mice)) {
                 return NextCellContent.Mouse;
             }
@@ -93,6 +102,10 @@ namespace Pics {
             return false;
         }
 
+        private bool is_next_cell_ground(Coordinates next_coordinates, Room room) {
+            var content = room.try_get(next_coordinates);
+            return content == Cell.Ground;
+        }
 
         private bool is_next_cell_snow(Coordinates next_coordinates, Room room) {
             var content = room.try_get(next_coordinates);
@@ -154,7 +167,8 @@ namespace Pics {
             if(previous_background == NextCellContent.Ground && next_content == NextCellContent.Snow) {
                 previous_background = next_content;
                 backround_change_status = BackgroundChange.EnteredSnow;
-            } else if(previous_background == NextCellContent.Snow && next_content == NextCellContent.Ground) {
+            } else if( previous_background == NextCellContent.Snow &&
+                        (next_content == NextCellContent.Ground || next_content == NextCellContent.GroundAndMouse) ) {
                 previous_background = next_content;
                 backround_change_status = BackgroundChange.LeftSnow;
             } else {
