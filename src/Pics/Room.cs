@@ -38,6 +38,10 @@ namespace Pics {
             return _floor[coordinates.x, coordinates.y];
         }
 
+        public void set(Coordinates coordinates, Cell content) {
+            _floor[coordinates.x, coordinates.y] = content;
+        }
+
         public HashSet<Coordinates> get_steps() {
             return _steps;
         }
