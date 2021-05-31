@@ -30,6 +30,28 @@ namespace Pics {
             return NextCellContent.Ground;
         }
 
+        private bool is_next_cell_mouse(Coordinates next_coordinates, List<GroundMouse> ground_mice, List<SnowMouse> snow_mice) {
+            return is_next_cell_ground_mouse(next_coordinates, ground_mice)
+                || is_next_cell_snow_mouse(next_coordinates, snow_mice);
+        }
+
+        private bool is_next_cell_ground_mouse(Coordinates next_coordinates, List<GroundMouse> ground_mice) {
+            return is_mouse_at_coordinates(next_coordinates, ground_mice);
+        }
+
+        private bool is_next_cell_snow_mouse(Coordinates next_coordinates, List<SnowMouse> snow_mice) {
+            return is_mouse_at_coordinates(next_coordinates, snow_mice);
+        }
+
+        private bool is_mouse_at_coordinates(Coordinates coordinates, IEnumerable<Mouse> mice) {
+            foreach(var mouse in mice) {
+                if (coordinates == mouse.coordinates) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private bool is_next_cell_outer_wall(Coordinates next_coordinates, Room room) {
             if(next_coordinates.x >= room.width) {
                 return true;
