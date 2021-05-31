@@ -6,6 +6,8 @@ namespace Pics {
 
         private int spare_brushes;
         private bool making_steps = false;
+        private NextCellContent previous_background = NextCellContent.Ground;
+        private BackgroundChange backround_change_status = BackgroundChange.None;
         public Brush() {
             coordinates = initial_coordinates();
             direction = Direction.Stop;
@@ -18,6 +20,7 @@ namespace Pics {
             switch(next_content) {
                 case NextCellContent.Ground:
                 case NextCellContent.Snow:
+                    mark_if_background_changed(next_content);
                     go_on(next_coordinates);
                     break;
                 case NextCellContent.Wall:
@@ -107,5 +110,16 @@ namespace Pics {
             making_steps = false;
         }
 
+        private void mark_if_background_changed(NextCellContent next_content) {
+            if(previous_background == NextCellContent.Ground && next_content == NextCellContent.Snow) {
+                previous_background = next_content;
+                backround_change_status = BackgroundChange.EnteredSnow;
+            } else if(previous_background == NextCellContent.Snow && next_content == NextCellContent.Ground) {
+                previous_background = next_content;
+                backround_change_status = BackgroundChange.LeftSnow;
+            } else {
+                backround_change_status = BackgroundChange.None;
+            }
+        }
     }
 }
