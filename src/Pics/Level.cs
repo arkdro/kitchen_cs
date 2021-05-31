@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Pics {
 
@@ -36,7 +36,7 @@ namespace Pics {
         }
         private void delay() {
             // FIXME delay should depend on a level
-            Task.Delay(10);
+            Thread.Sleep(1000);
         }
 
         private void create_mice() {
