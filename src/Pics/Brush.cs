@@ -21,13 +21,13 @@ namespace Pics {
             switch(next_content) {
                 case NextCellContent.GroundAndMouse:
                     mark_if_background_changed(next_content);
-                    go_on(room, next_coordinates);
+                    go_on(room, next_coordinates, snow_mice);
                     burn(room);
                     break;
                 case NextCellContent.Ground:
                 case NextCellContent.Snow:
                     mark_if_background_changed(next_content);
-                    go_on(room, next_coordinates);
+                    go_on(room, next_coordinates, snow_mice);
                     break;
                 case NextCellContent.Wall:
                     stop();
@@ -111,7 +111,7 @@ namespace Pics {
             var content = room.try_get(next_coordinates);
             return content == Cell.Snow;
         }
-        private void go_on(Room room, Coordinates next_coordinates) {
+        private void go_on(Room room, Coordinates next_coordinates, List<SnowMouse> snow_mice) {
             if (entered_into_snow()) {
                 start_making_steps();
             }
@@ -120,6 +120,7 @@ namespace Pics {
                 stop();
                 stop_making_steps();
                 finish_steps(room);
+                remove_unoccupied_snow(room, snow_mice);
             }
             if(making_steps) {
                 add_step(room, coordinates);
@@ -196,6 +197,29 @@ namespace Pics {
 
         private void clear_steps(Room room) {
             room.clear_steps();
+        }
+
+        private void remove_unoccupied_snow(Room room, List<SnowMouse> snow_mice) {
+            Replica replica = new Replica(room);
+            int keep_color = 2;
+            foreach (var mouse in snow_mice) {
+                var coordinates = mouse.coordinates;
+                var color = replica.get(coordinates);
+                if (color != keep_color) {
+                    var filler = new Fill.Fill();
+                    var new_data = filler.fill(replica.data, coordinates.x, coordinates.y, color, keep_color);
+                    replica.data = new_data;
+                }
+            }
+            for (int y = 0; y < room.height; y++) {
+                for (int x = 0; x < room.width; x++) {
+                    var coordinates = new Coordinates(x: x, y: y);
+                    if (replica.get(coordinates) == replica.snow_color) {
+                        replica.set(coordinates, replica.ground_color);
+                    }
+                }
+            }
+            room.copy_ground_from_replica(replica);
         }
     }
 }
