@@ -26,7 +26,13 @@ namespace Pics {
             Wall,
             Mouse
         }
-        private NextCellContent get_content_at_next_coordinates(Coordinates coordinates, List<GroundMouse> ground_mice, List<SnowMouse> snow_mice, Room room) {
+        private NextCellContent get_content_at_next_coordinates(Coordinates next_coordinates, List<GroundMouse> ground_mice, List<SnowMouse> snow_mice, Room room) {
+            if(is_next_cell_mouse(next_coordinates, ground_mice, snow_mice)) {
+                return NextCellContent.Mouse;
+            }
+            if(is_next_cell_outer_wall(next_coordinates, room)) {
+                return NextCellContent.Wall;
+            }
             return NextCellContent.Ground;
         }
 
