@@ -12,9 +12,6 @@ namespace Pics
 
         public void Run()
         {
-            var r = new Room(config.width, config.height);
-            Console.WriteLine("Room:");
-            Console.WriteLine(r);
             game_loop();
             Console.WriteLine("Done.");
         }

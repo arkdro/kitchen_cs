@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,10 +10,12 @@ namespace Pics {
         private Brush brush;
         private List<GroundMouse> ground_mice;
         private List<SnowMouse> snow_mice;
+        private Room room;
 
         public Level(Config config, int level_number) {
             this.config = config;
             this.level_number = level_number;
+            create_room();
             create_brush();
             create_mice();
         }
@@ -54,6 +57,9 @@ namespace Pics {
             }
         }
 
+        private void create_room() {
+            var r = new Room(config.width, config.height);
+        }
         private void create_brush() {
             brush = new Brush();
         }
@@ -79,6 +85,8 @@ namespace Pics {
             }
         }
         private void redraw() {
+            Console.WriteLine("Room:");
+            Console.WriteLine(room);
         }
         private LevelResult calculate_level_result() {
             return LevelResult.next_level;
