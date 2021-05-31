@@ -4,6 +4,7 @@ namespace Pics
 {
     public enum Cell {
         Ground,
+        Snow,
         Food,
         Animal
     }
@@ -11,6 +12,7 @@ namespace Pics
         public static string CellName(this Cell input) {
             switch(input) {
                 case Cell.Ground: return ".";
+                case Cell.Snow: return "#";
                 case Cell.Food: return "o";
                 case Cell.Animal: return "X";
             }
