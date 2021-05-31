@@ -33,5 +33,19 @@ namespace Pics {
             throw new ArgumentException($"Unknown Direction to flip vertical wall: {input}");
         }
 
+        public static Coordinates direction_to_delta(this Direction input) {
+            switch(input) {
+                case Direction.UpLeft: return new Coordinates(x: -1, y: -1);
+                case Direction.Up: return new Coordinates(x: 0, y: -1);
+                case Direction.UpRight: return new Coordinates(x: 1, y: -1);
+                case Direction.Left: return new Coordinates(x: -1, y: 0);
+                case Direction.Stop: return new Coordinates(x: 0, y: 0);
+                case Direction.Right: return new Coordinates(x: 1, y: 0);
+                case Direction.DownLeft: return new Coordinates(x: -1, y: 1);
+                case Direction.Down: return new Coordinates(x: 0, y: 1);
+                case Direction.DownRight: return new Coordinates(x: 1, y: 1);
+            }
+            throw new ArgumentException($"Unknown Direction to get delta: {input}");
+        }
     }
 }
