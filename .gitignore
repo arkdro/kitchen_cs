@@ -13,6 +13,7 @@ bin
 
 ### vsc ###
 .ionide/
+.vscode/
 *.code-workspace
 
 ### json ###
