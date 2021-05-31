@@ -119,6 +119,11 @@ namespace Pics {
                 brush.burn(room);
                 return;
             }
+            var steps_result = check_brush_steps();
+            if (steps_result == BiteResult.Bitten) {
+                brush.burn(room);
+                return;
+            }
         }
 
         private BiteResult check_brush() {
@@ -131,9 +136,27 @@ namespace Pics {
             foreach(var mouse in ground_mice) {
                 var result = mouse.check_brush_to_bite(brush);
                 if (result == BiteResult.Bitten) {
-                    return;
+                    return result;
                 }
             }
+            return BiteResult.Missed;
+        }
+
+        private BiteResult check_brush_steps() {
+            var steps = room.get_steps();
+            foreach(var mouse in snow_mice) {
+                var result = mouse.check_brush_steps_to_bite(steps);
+                if (result == BiteResult.Bitten) {
+                    return result;
+                }
+            }
+            foreach(var mouse in ground_mice) {
+                var result = mouse.check_brush_steps_to_bite(steps);
+                if (result == BiteResult.Bitten) {
+                    return result;
+                }
+            }
+            return BiteResult.Missed;
         }
 
         private void redraw() {
