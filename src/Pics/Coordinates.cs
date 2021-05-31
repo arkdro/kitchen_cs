@@ -4,7 +4,7 @@ namespace Pics {
             this.x = x;
             this.y = y;
         }
-        public int x {get; set;}
-        public int y {get; set;}
+        internal readonly int x;
+        internal readonly int y;
     }
 }
