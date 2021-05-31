@@ -14,8 +14,7 @@ namespace Pics {
             }
         }
 
-        public void update() {
-            //
+        public void update(Room room) {
             if(direction == Direction.Stop || speed == 0) {
                 return;
             }

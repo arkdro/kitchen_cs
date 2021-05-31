@@ -103,7 +103,7 @@ namespace Pics {
 
         private void update_ground_mice() {
             foreach(var mouse in ground_mice) {
-                mouse.update();
+                mouse.update(room);
             }
         }
 
