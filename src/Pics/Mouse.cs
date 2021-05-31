@@ -18,6 +18,21 @@ namespace Pics {
             if(direction == Direction.Stop || speed == 0) {
                 return;
             }
+            var next_cell = get_next_cell_content(room);
+            switch(next_cell) {
+                case NextCell.Free:
+                    coordinates = Move.move(direction, coordinates);
+                    break;
+                case NextCell.Corner:
+                    bounce_corner(room);
+                    break;
+                case NextCell.VerticallWall:
+                    bounce_vertical_wall(room);
+                    break;
+                case NextCell.HorisontalWall:
+                    bounce_horisontal_wall();
+                    break;
+            }
         }
 
         public BiteResult check_brush_to_bite(Brush brush) {
