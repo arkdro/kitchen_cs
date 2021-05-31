@@ -99,6 +99,8 @@ namespace Pics {
         private void burn() {
             coordinates = initial_coordinates();
             spare_brushes--;
+            stop();
+            stop_making_steps();
         }
 
         private Coordinates initial_coordinates() {
