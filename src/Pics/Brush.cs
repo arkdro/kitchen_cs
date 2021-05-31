@@ -139,6 +139,12 @@ namespace Pics {
             }
         }
 
+        private void add_step(Room room, Coordinates coordinates) {
+            if(contains_snow(room, coordinates)) {
+               room.add_step(coordinates);
+            }
+        }
+
         private bool contains_snow(Room room, Coordinates coordinates) {
             var content = room.get(coordinates);
             return content == Cell.Snow;
